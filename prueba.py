@@ -5,9 +5,13 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-x = pd.read_csv("datos/cars.csv")
+data = pd.read_csv("datos/cars.csv")
 
-print(x)
+print(data)
 
 # seleccion
-sns.countplot(x["drives_right"])
+grafica = sns.countplot(data["drives_right"])
+grafica.set_title("Titulo")
+grafica.set(xlabel = "titulo eje x",
+            ylabel = "titulo eje y")
+plt.show()
