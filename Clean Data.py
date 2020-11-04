@@ -64,5 +64,10 @@ df_bikes["age"].describe()
 df_bikes["age"].value_counts() 
 
 # histograma
-
 sns.distplot(df_bikes["age"])
+
+################# Duplicados, usamos .duplicated e indicamos el campo
+
+duplicados = df_bikes.duplicated(subset = "bike_id", keep = False)
+duplicados.value_counts()
+df_bikes["bike_id"].value_counts()
