@@ -109,3 +109,19 @@ sns.countplot(airlines["tiempo_espera"])
 
 # ahora agrupamos con texto.
 # agrupar por dias labores (weekday) y fin de semana (weekend)
+airlines["day"].unique()
+
+# creamos diccionario para mapear dato del campo "day"
+mapear = {"Monday":"weekday",
+          "Tuesday":"weekday",
+          "Wednesday":"weekday",
+          "Thursday":"weekday",
+          "Friday":"weekday",
+          "Saturday":"weekend",
+          "Sunday":"weekend"}
+
+# Usamos reemplazar en nueva columna
+airlines["tipo_dia"] = airlines["day"].replace(mapear)
+
+#grafica
+sns.countplot(airlines["tipo_dia"])
