@@ -125,3 +125,15 @@ airlines["tipo_dia"] = airlines["day"].replace(mapear)
 
 #grafica
 sns.countplot(airlines["tipo_dia"])
+
+####### eliminar partes de texto
+# elimar los prefijos en los nombres 
+
+# reemplazar Dr. Mr. Miss. Ms.
+airlines['full_name'] = airlines['full_name'].str.replace("Dr.","")
+airlines['full_name'] = airlines['full_name'].str.replace("Mr.","")
+airlines['full_name'] = airlines['full_name'].str.replace("Miss","")
+airlines['full_name'] = airlines['full_name'].str.replace("Ms.","")
+
+# verificamos
+assert airlines['full_name'].str.contains('Ms.|Mr.|Miss|Dr.').any() == False
