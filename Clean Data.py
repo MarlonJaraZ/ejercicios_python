@@ -137,3 +137,42 @@ airlines['full_name'] = airlines['full_name'].str.replace("Ms.","")
 
 # verificamos
 assert airlines['full_name'].str.contains('Ms.|Mr.|Miss|Dr.').any() == False
+
+######### tratar fechas
+# introduccion a trabajar con fechas
+
+df_bancos = pd.read_csv("datos/banking_dirty.csv",
+                        index_col = 0)
+
+df_bancos.head()
+
+# cambiar formato en el campo datetime
+
+df_bancos["account_opened"] = pd.to_datetime(df_bancos["account_opened"],
+                                            # detecta el formato
+                                            infer_datetime_format = True,
+                                            # trata errores con missin value
+                                            errors = "coerce")
+
+df_bancos["account_opened"].head(n=20)
+df_bancos["account_opened"].isna().sum()
+
+# consistencia en campos con suma de otros campos
+# validar que inv_amount sea igual a la suma de los fondos A B C D
+
+columnas_fondos = ['fund_A','fund_B','fund_C','fund_D']
+
+# validamos y creamos objetos con True - False
+# axis = 1 configurar que la suma sea por filas
+ver_fondos = df_bancos[columnas_fondos].sum(axis = 1) == df_bancos["inv_amount"]
+
+# creamos df consistentes e inconsistentes
+
+consistente_inversion = df_bancos[ver_fondos]
+print(consistente_inversion.head())
+
+# al usar el ~ trae los False 
+inconsistente_inversion = df_bancos[~ver_fondos]
+print(inconsistente_inversion.head())
+
+print("numero de registros inconsistentes en inversion ", inconsistente_inversion.shape[0])
