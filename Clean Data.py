@@ -176,3 +176,14 @@ inconsistente_inversion = df_bancos[~ver_fondos]
 print(inconsistente_inversion.head())
 
 print("numero de registros inconsistentes en inversion ", inconsistente_inversion.shape[0])
+
+####### missin values
+
+df_bancos.isna().sum()      # no missing values
+
+# visualizar missing data matrix
+
+import missingno as msno
+
+msno.matrix(df_bancos)
+plt.show()
