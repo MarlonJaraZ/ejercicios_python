@@ -1,5 +1,6 @@
 # Clean Data ejemplos
 import pandas as pd 
+import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
@@ -71,3 +72,40 @@ sns.distplot(df_bikes["age"])
 duplicados = df_bikes.duplicated(subset = "bike_id", keep = False)
 duplicados.value_counts()
 df_bikes["bike_id"].value_counts()
+
+############## crear rangos para agrupar datos
+# rango numericos
+
+# importar nuevo dataset
+
+airlines = pd.read_csv("datos/airlines_final.csv",
+                        index_col= 0)
+
+print(airlines.head())
+
+# info
+airlines.info()
+
+# la idea es crear grupos a partir del campo wait_min,
+# que representa el tiempo de espera: 1 hora, 2 hora y mas 2 horas
+
+# crear los rangos
+rangos = [0, 60, 180, np.inf]
+
+# crear las etiquetas de los rangos de espera
+rangos_etiq = ["corta", "media", "larga"]
+
+# creamos nueva columna usando pd.cut 
+
+airlines["tiempo_espera"] = pd.cut(airlines["wait_min"], 
+                                    bins = rangos,
+                                    labels = rangos_etiq)
+
+# verificamos contenido .unique()
+airlines["tiempo_espera"].unique()
+
+# grafica
+sns.countplot(airlines["tiempo_espera"])
+
+# ahora agrupamos con texto.
+# agrupar por dias labores (weekday) y fin de semana (weekend)
