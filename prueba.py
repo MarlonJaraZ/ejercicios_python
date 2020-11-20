@@ -10,7 +10,7 @@ data = pd.read_csv("datos/cars.csv")
 print(data)
 
 # seleccion
-grafica = sns.countplot(data["drives_right"])
+grafica = sns.countplot(x = data["drives_right"])
 grafica.set_title("Titulo")
 grafica.set(xlabel = "titulo eje x",
             ylabel = "titulo eje y")
