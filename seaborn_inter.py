@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 # importar datos 
 
-df_grant = pd.read_csv("datos\schoolimprovement2010grants.csv",index_col= 0)
+df_grant = pd.read_csv("datos/schoolimprovement2010grants.csv",index_col= 0)
 
 # conozcamos los datos
 # dimensiones - tamaño
