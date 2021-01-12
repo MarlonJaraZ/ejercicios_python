@@ -23,7 +23,7 @@ df_bikes["user_type_cat"].describe()
 
 # grafico por tipo de usuario
 sns.countplot(x = "user_type_cat", data = df_bikes)
-
+plt.show()
 ############## eliminar texto .str.strip
 # el campo duracion está como texto:
 
@@ -130,7 +130,7 @@ sns.countplot(airlines["tipo_dia"])
 # elimar los prefijos en los nombres 
 
 # reemplazar Dr. Mr. Miss. Ms.
-airlines['full_name'] = airlines['full_name'].str.replace("Dr.","")
+airlines['full_name'] = airlines['full_name'].str.replace("Dr.","")
 airlines['full_name'] = airlines['full_name'].str.replace("Mr.","")
 airlines['full_name'] = airlines['full_name'].str.replace("Miss","")
 airlines['full_name'] = airlines['full_name'].str.replace("Ms.","")
