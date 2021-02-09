@@ -11,7 +11,7 @@ print(data)
 
 # seleccion
 grafica = sns.countplot(x = data["drives_right"])
-grafica.set_title("Titulo")
+grafica.set_title("Un Mejor Titulo")
 grafica.set(xlabel = "titulo eje x",
             ylabel = "titulo eje y")
 plt.show()
