@@ -187,3 +187,34 @@ import missingno as msno
 
 msno.matrix(df_bancos)
 plt.show()
+
+
+tabla_excel = pd.read_excel("datos\Datos.xlsx")
+
+tabla_excel.head()
+tabla_excel.describe()
+tabla_excel.info()
+
+# muestra los NaN
+tabla_excel.isna() 
+
+# por columna imprime si hay NaN
+tabla_excel.isna().any()
+
+# cuenta los NaN
+tabla_excel.isna().sum()
+
+# grafica de NaN
+tabla_excel.isna().sum().plot(kind = "bar")
+plt.show()
+
+type(tabla_excel)
+
+# seleccionar las 5 primeras columnas 
+definitiva = tabla_excel.iloc[:,0:6]
+
+# ver primera filas
+definitiva.head()
+
+sns.countplot(x = "Cuenta", data=definitiva)
+plt.show()
